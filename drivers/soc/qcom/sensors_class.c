@@ -88,7 +88,7 @@ int cal_map[] = {
 	offsetof(struct cal_result_t, range),
 };
 
-static struct class *sensors_class;
+struct class *sensors_class;
 EXPORT_SYMBOL_GPL(sensors_class);
 static struct device *sensor_dev;
 static struct input_dev *meta_input_dev;

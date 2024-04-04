@@ -497,7 +497,7 @@ static int32_t sd77428_detect_ic(struct oz8806_data* chip)
 	return 0;
 }
 
-static int sd77428_hw_init(struct oz8806_data *chip)
+int sd77428_hw_init(struct oz8806_data *chip)
 {
 	if(sd77428_write_word(chip,0x12,0x6303) < 0) //disable MCU, 关闭MCU, 只保留硬件ADC功能
 		goto error;
