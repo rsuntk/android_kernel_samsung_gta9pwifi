@@ -6771,3 +6771,6 @@ CONFIG_CORESIGHT_TGU=y
 CONFIG_CORESIGHT_OST=y
 # CONFIG_CORESIGHT_FUSE is not set
 # end of Kernel hacking
+
+# qcaqld3-0 - vendor/qcom-opensource/wlan
+CONFIG_QCA_CLD_WLAN=m
