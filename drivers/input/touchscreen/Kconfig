@@ -1324,32 +1324,35 @@ config TOUCHSCREEN_HIMAX_CHIPSET
 	  To compile this driver as a module, choose M here: the
 	  module will be called Himax_Hx83102j.
 
-#source "drivers/input/touchscreen/st/Kconfig"
+source "drivers/input/touchscreen/st/Kconfig"
 
-#source "drivers/input/touchscreen/focaltech_touch/Kconfig"
+source "drivers/input/touchscreen/focaltech_touch/Kconfig"
 
-#source "drivers/input/touchscreen/synaptics_tcm/Kconfig"
+source "drivers/input/touchscreen/synaptics_tcm/Kconfig"
 
-#config TOUCHSCREEN_SYNAPTICS_DSX
-#	bool "Synaptics DSX Touchscreen Driver"
-#	depends on I2C
-#	default y
-#	help
-#	  Say Y here if you have a Synaptics Touchscreen.
+config TOUCHSCREEN_SYNAPTICS_DSX
+	bool "Synaptics DSX Touchscreen Driver"
+	depends on I2C
+	default y
+	help
+	  Say Y here if you have a Synaptics Touchscreen.
 
-#	  If unsure, say N.
+	  If unsure, say N.
 
-#	  To compile this driver as a module, choose M here: the
-#	  module will be called synaptics_tcm.
+	  To compile this driver as a module, choose M here: the
+	  module will be called synaptics_tcm.
+
 # +P86801AA1 peiyuexiang.wt,add,20230506,add sec_tsp node
 config SEC_SYSFS
 	tristate "Create a sysfs node for SEC_CLASS"
+
 config TP_SEC_CMD
 	tristate "TP cmd driver"
 # -P86801AA1 peiyuexiang.wt,add,20230506,add sec_tsp node
-#source "drivers/input/touchscreen/synaptics_dsx/Kconfig"
 
-#source "drivers/input/touchscreen/nt36xxx/Kconfig"
+source "drivers/input/touchscreen/synaptics_dsx/Kconfig"
+
+source "drivers/input/touchscreen/nt36xxx/Kconfig"
 
 source "drivers/input/touchscreen/focaltech_touch_spi/Kconfig"
 source "drivers/input/touchscreen/chipone_tddi_spi/Kconfig"
