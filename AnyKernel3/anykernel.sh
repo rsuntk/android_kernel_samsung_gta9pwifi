@@ -13,6 +13,9 @@ do.cleanuponabort=0
 device.name1=gta9p
 device.name2=gta9pxx
 device.name3=gta9pxxx
+device.name4=gta9pwifi
+device.name5=gta9pwifixx
+device.name6=gta9pwifixxx
 '; } # end properties
 
 
