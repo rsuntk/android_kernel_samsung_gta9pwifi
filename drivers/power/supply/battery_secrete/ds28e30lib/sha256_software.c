@@ -605,7 +605,6 @@ static void sha_prepareSchedule(char* message)
 static void sha256_hashblock(char* message, ushort lastblock)
 {
    ushort sha1counter = 0;
-   ushort sha1functionselect = 0;
    ushort i;
    ulong nodeT1, nodeT2;
 
@@ -643,7 +642,6 @@ static void sha256_hashblock(char* message, ushort lastblock)
       sha1counter++;
       if (sha1counter==20)
       {
-         sha1functionselect++;
          sha1counter = 0;
       }			
 

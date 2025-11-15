@@ -414,7 +414,6 @@ void sha_prepareSchedule(u8* message)
 void sha256_hashblock(u8* message, u32 lastblock)
 {
    u32 sha1counter = 0;
-   u32 sha1functionselect = 0;
    u32 i;
    u32 nodeT1, nodeT2;
 
@@ -452,7 +451,6 @@ void sha256_hashblock(u8* message, u32 lastblock)
       sha1counter++;
       if (sha1counter==20)
       {
-         sha1functionselect++;
          sha1counter = 0;
       }			
 
