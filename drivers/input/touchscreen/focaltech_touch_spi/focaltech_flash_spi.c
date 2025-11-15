@@ -59,15 +59,12 @@ extern char Lcm_name_tp[255];
 * Global variable or extern global variabls/functions
 *****************************************************************************/
 u8 fw_file[] = {
-#include FTS_UPGRADE_FW_FILE
 };
 
 u8 fw_file2[] = {
-#include FTS_UPGRADE_FW2_FILE
 };
 
 u8 fw_file3[] = {
-#include FTS_UPGRADE_FW3_FILE
 };
 
 struct upgrade_module module_list[] = {
