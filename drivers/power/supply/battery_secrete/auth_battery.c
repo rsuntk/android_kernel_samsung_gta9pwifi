@@ -864,7 +864,7 @@ static int __init auth_battery_init(void)
 	g_info = info;
 	//schedule_delayed_work(&info->dwork, msecs_to_jiffies(2000));
 
-	return 0;
+	return ret;
 }
 
 static void __exit auth_battery_exit(void)

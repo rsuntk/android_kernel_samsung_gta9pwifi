@@ -2425,9 +2425,8 @@ static ssize_t ds28e30_ds_chip_ok_read(struct device *dev,
 				       struct device_attribute *attr,
 				       char *buf)
 {
-	int ret;
 	int chip_ok_status;
-	ret = ds28e30_Read_RomID_retry(mi_romid);
+	ds28e30_Read_RomID_retry(mi_romid);
 	if ((((mi_romid[0] & 0x7F) == FAMILY_CODE) && (mi_romid[6] == Samsung_CID_MSB)
 	     && ((mi_romid[5] & 0xf0) == Samsung_CID_LSB)))
 		chip_ok_status = true;
