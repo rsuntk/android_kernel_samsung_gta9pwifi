@@ -1,3 +1,8 @@
+#!/usr/bin/env bash
+
+set -o pipefail
+trap 'echo "Build cancelled by user."; exit 130' INT
+
 # Download Prebuilt Clang (AOSP)
 if [ ! -d $(pwd)/toolchain/clang/neutron ]; then
     echo "Downloading Prebuilt Clang from AOSP..."
@@ -14,7 +19,14 @@ export CLANG_TOOL_PATH=$(pwd)/toolchain/clang/neutron/bin
 export PATH=${CLANG_TOOL_PATH}:${PATH//"${CLANG_TOOL_PATH}:"}
 export LD_LIBRARY_PATH=$(pwd)/toolchain/clang/neutron/lib
 make -C $(pwd) O=$(pwd)/out CC=clang LLVM=1 ARCH=arm64 DTC_EXT=$(pwd)/tools/dtc CLANG_TRIPLE=aarch64-linux-gnu- vendor/gta9p_eur_openx_defconfig 2>&1 | tee log.txt
-make -C $(pwd) O=$(pwd)/out CC=clang LLVM=1 ARCH=arm64 DTC_EXT=$(pwd)/tools/dtc CLANG_TRIPLE=aarch64-linux-gnu- -j$(nproc --all) 2>&1 | tee -a log.txt
+
+# Run the build
+if make -C $(pwd) O=$(pwd)/out CC=clang LLVM=1 ARCH=arm64 DTC_EXT=$(pwd)/tools/dtc CLANG_TRIPLE=aarch64-linux-gnu- -j$(nproc --all) 2>&1 | tee -a log.txt; then
+    echo "Build completed successfully."
+else
+    echo "Build failed or was cancelled. Exiting." >&2
+    exit 1
+fi
 # Final Build
 mkdir -p kernelbuild
 echo "Copying Image into kernelbuild..."
