@@ -34,7 +34,7 @@ mkdir -p modulebuild
 echo "Copying modules into modulebuild..."
 cp -nr $(find out -name '*.ko') $(pwd)/modulebuild
 echo "Stripping debug symbols from modules..."
-$(pwd)/toolchain/clang/neutron/bin/llvm-strip --strip-debug $(pwd)/modulebuild/*.ko
+$(pwd)/toolchain/clang/aosp/bin/llvm-strip --strip-debug $(pwd)/modulebuild/*.ko
 echo "Done copying modules into modulebuild."
 # AnyKernel3 Support
 cp -nf $(pwd)/kernelbuild/Image $(pwd)/AnyKernel3
