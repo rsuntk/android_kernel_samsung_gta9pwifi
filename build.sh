@@ -1,23 +1,21 @@
 #!/usr/bin/env bash
-
 set -o pipefail
 trap 'echo "Build cancelled by user."; exit 130' INT
 
 # Download Prebuilt Clang (AOSP)
-if [ ! -d $(pwd)/toolchain/clang/neutron ]; then
+if [ ! -d $(pwd)/toolchain/clang/aosp ]; then
     echo "Downloading Prebuilt Clang from AOSP..."
-    mkdir -p $(pwd)/toolchain/clang/neutron
-    wget https://github.com/Neutron-Toolchains/clang-build-catalogue/releases/download/10032024/neutron-clang-10032024.tar.zst
-    tar --zstd -xvf neutron-clang-10032024.tar.zst -C $(pwd)/toolchain/clang/neutron
+    mkdir -p $(pwd)/toolchain/clang/aosp
+   git clone https://github.com/crdroidandroid/android_prebuilts_clang_host_linux-x86_clang-6573524 $(pwd)/toolchain/clang/aosp
 else
-    echo "This $(pwd)/toolchain/clang/neutron already exists."
+    echo "This $(pwd)/toolchain/clang/aosp already exists."
 fi
 # Exports
 export ARCH=arm64
-export CROSS_COMPILE=$(pwd)/toolchain/clang/neutron/bin
-export CLANG_TOOL_PATH=$(pwd)/toolchain/clang/neutron/bin
+export CROSS_COMPILE=$(pwd)/toolchain/clang/aosp/bin
+export CLANG_TOOL_PATH=$(pwd)/toolchain/clang/aosp/bin
 export PATH=${CLANG_TOOL_PATH}:${PATH//"${CLANG_TOOL_PATH}:"}
-export LD_LIBRARY_PATH=$(pwd)/toolchain/clang/neutron/lib
+export LD_LIBRARY_PATH=$(pwd)/toolchain/clang/aosp/lib
 make -C $(pwd) O=$(pwd)/out CC=clang LLVM=1 ARCH=arm64 DTC_EXT=$(pwd)/tools/dtc CLANG_TRIPLE=aarch64-linux-gnu- vendor/gta9p_eur_openx_defconfig 2>&1 | tee log.txt
 
 # Run the build
