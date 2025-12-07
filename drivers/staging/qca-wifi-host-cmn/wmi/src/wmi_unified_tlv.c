@@ -15986,7 +15986,7 @@ static void populate_tlv_service(uint32_t *wmi_service)
 #endif
 #ifdef WLAN_FEATURE_ROAM_OFFLOAD
 	wmi_service[wmi_service_5ghz_hi_rssi_roam_support] =
-					WMI_SERVICE_5GHZ_HI_RSSI_ROAM_SUPPORT;
+					0;
 #endif
 }
 
