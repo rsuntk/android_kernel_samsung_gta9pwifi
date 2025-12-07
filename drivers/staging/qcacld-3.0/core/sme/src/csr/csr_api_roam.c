@@ -15029,8 +15029,8 @@ QDF_STATUS csr_send_join_req_msg(struct mac_context *mac, uint32_t sessionId,
 	bool follow_ap_edca;
 	bool reconn_after_assoc_timeout = false;
 	uint8_t programmed_country[REG_ALPHA2_LEN + 1];
-	enum reg_6g_ap_type power_type_6g;
-	bool ctry_code_match;
+	enum reg_6g_ap_type power_type_6g = 0;
+	bool ctry_code_match = false;
 	uint8_t reg_cc[REG_ALPHA2_LEN + 1];
 
 	if (!pSession) {

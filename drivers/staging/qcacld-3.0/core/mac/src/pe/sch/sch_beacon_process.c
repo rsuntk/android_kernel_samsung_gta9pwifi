@@ -1,3 +1,4 @@
+#define wlan_reg_get_6g_power_type_for_ctry(...) 0
 /*
  * Copyright (c) 2012-2021 The Linux Foundation. All rights reserved.
  * Copyright (c) 2021-2023 Qualcomm Innovation Center, Inc. All rights reserved.
